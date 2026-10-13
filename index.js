@@ -1,14 +1,15 @@
-const http = require('http');
+require('dotenv').config()
+const http = require('http')
 
-const hostname = '127.0.0.1';
-const port = 3000;
+function requestHandler() {
+    console.log('Bienvenidos al curso')
+}
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-  res.end('¡Servidor funcionando correctamente en el entorno de despliegue!\n');
-});
+const server=http.createServer(requestHandler)
 
-server.listen(port, hostname, () => {
-  console.log(`Servidor ejecutándose en http://${hostname}:${port}/`);
-});
+const PORT = process.env.PORT
+
+server.listen(PORT, function() {
+  console.log('Aplicacion corriendo en :' + PORT)
+  
+})
